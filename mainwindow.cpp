@@ -6,6 +6,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    this->setStyleSheet("QWidget { border: 1px solid red; }"); // debug border
 }
 
 MainWindow::~MainWindow()
