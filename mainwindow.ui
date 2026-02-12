@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QTabWidget" name="tabWidget">
@@ -21,71 +21,28 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="dashboardTab">
        <attribute name="title">
         <string>Dashboard</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout">
-        <item row="1" column="1">
-         <widget class="QWidget" name="sensor_4" native="true">
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
-            <widget class="QLabel" name="label_5">
-             <property name="text">
-              <string>Desktop LED</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>PushButton</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QWidget" name="sensor_2" native="true">
-          <layout class="QGridLayout" name="gridLayout_2">
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_2">
-             <property name="text">
-              <string>Temperature [°C]:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0" colspan="2">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Temperature Sensor</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLCDNumber" name="lcdNumber"/>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QWidget" name="sensor_3" native="true">
+        <item row="2" column="0">
+         <widget class="QWidget" name="humiditySensorWidget" native="true">
           <layout class="QGridLayout" name="gridLayout_3">
            <item row="2" column="1">
-            <widget class="QLCDNumber" name="lcdNumber_2"/>
+            <widget class="QLCDNumber" name="humiditySensorValue"/>
            </item>
            <item row="2" column="0">
-            <widget class="QLabel" name="label_6">
+            <widget class="QLabel" name="humiditySensorLabel">
              <property name="text">
               <string>Humidity [%]:</string>
              </property>
             </widget>
            </item>
            <item row="0" column="0" colspan="2">
-            <widget class="QLabel" name="label_4">
+            <widget class="QLabel" name="humiditySensorName">
              <property name="text">
               <string>Humidity Sensor</string>
              </property>
@@ -94,24 +51,104 @@
           </layout>
          </widget>
         </item>
-        <item row="0" column="1">
-         <widget class="QWidget" name="sensor_1" native="true">
-          <layout class="QVBoxLayout" name="verticalLayout_3">
-           <item>
-            <widget class="QLabel" name="label_3">
+        <item row="0" column="2">
+         <widget class="QWidget" name="kitchenLightWidget" native="true">
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="0" column="0">
+            <widget class="QLabel" name="kitchenLightName">
              <property name="text">
-              <string>Light  kitchen</string>
+              <string>Kitchen light</string>
              </property>
             </widget>
            </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_2">
+           <item row="1" column="0">
+            <widget class="QPushButton" name="kitchenLightButton">
              <property name="text">
               <string>PushButton</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
           </layout>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="Line" name="line">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QWidget" name="desktopLedWidget" native="true">
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="0" column="0">
+            <widget class="QLabel" name="desktopLedTitleName">
+             <property name="text">
+              <string>Desktop LED</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QPushButton" name="desktopLedButton">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="Line" name="line_2">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QWidget" name="temperatureSensorWidget" native="true">
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="1" column="0">
+            <widget class="QLabel" name="temperatureSensorLabel">
+             <property name="text">
+              <string>Temperature [°C]:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" colspan="2">
+            <widget class="QLabel" name="temperatureSensorName">
+             <property name="text">
+              <string>Temperature Sensor</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLCDNumber" name="temperatureSensorValue"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="Line" name="line_3">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="Line" name="line_4">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
          </widget>
         </item>
        </layout>
@@ -120,6 +157,47 @@
        <attribute name="title">
         <string>Devices</string>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QPushButton" name="addDeviceButton">
+          <property name="text">
+           <string>Add new device</string>
+          </property>
+          <property name="checkable">
+           <bool>false</bool>
+          </property>
+          <property name="autoDefault">
+           <bool>false</bool>
+          </property>
+          <property name="default">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="devicesTable">
+          <property name="columnCount">
+           <number>4</number>
+          </property>
+          <column>
+           <property name="text">
+            <string>Device Name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>State</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Settings</string>
+           </property>
+          </column>
+          <column/>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>

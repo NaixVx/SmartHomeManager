@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QVector>
+
+#include "device.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,7 +20,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_addDeviceButton_clicked();
+
 private:
     Ui::MainWindow *ui;
+
+    QVector<Device> devices;
+    void loadMockDevices();
+    void refreshDevicesTable();
 };
 #endif // MAINWINDOW_H
