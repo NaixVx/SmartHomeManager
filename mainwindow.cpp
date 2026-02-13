@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->devicesTable->setHorizontalHeaderLabels({"Device Name", "Online", "State", "Settings"});
 
     ui->devicesTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    // ui->devicesTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->devicesTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 MainWindow::~MainWindow()
@@ -130,21 +130,43 @@ void MainWindow::refreshDevicesTable()
 
         if(d.type == DeviceType::Switch)
         {
-            stateText = d.value ? "ON" : "OFF";
-        }
+            QPushButton *stateBtn = new QPushButton(d.value ? "ON" : "OFF");
+            stateBtn->setCheckable(true);
+            stateBtn->setChecked(d.value);
+            stateBtn->setProperty("mac", d.macAddress);
 
-        switch(d.sensorType){
-        case SensorType::Temperature:
-            stateText = QString::number(d.value) + " °C";
-            break;
-        case SensorType::Humidity:
-            stateText = QString::number(d.value) + " %";
-            break;
-        default:
-            break;
-        }
+            connect(stateBtn, &QPushButton::clicked, this, [=]()
+                    {
+                        QString mac = stateBtn->property("mac").toString();
 
-        ui->devicesTable->setItem(row, 2, new QTableWidgetItem(stateText));
+                        for(Device &s : devices)
+                        {
+                            if(s.macAddress == mac)
+                            {
+                                s.value = !s.value;
+                                break;
+                            }
+                        }
+
+                        refreshDevicesTable();
+                        refreshDashboard();
+                    });
+            ui->devicesTable->setCellWidget(row, 2, stateBtn);
+        }
+        else
+        {
+            switch(d.sensorType){
+            case SensorType::Temperature:
+                stateText = QString::number(d.value) + " °C";
+                break;
+            case SensorType::Humidity:
+                stateText = QString::number(d.value) + " %";
+                break;
+            default:
+                break;
+            }
+            ui->devicesTable->setItem(row, 2, new QTableWidgetItem(stateText));
+        }
 
         // Device settings button
         QPushButton *btn = new QPushButton("Settings");
@@ -185,4 +207,3 @@ void MainWindow::refreshDashboard()
         }
     }
 }
-
