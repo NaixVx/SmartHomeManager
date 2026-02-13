@@ -22,6 +22,8 @@ public:
 
 private slots:
     void on_addDeviceButton_clicked();
+    void on_kitchenLightButton_clicked();
+    void on_desktopLedButton_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -29,5 +31,6 @@ private:
     QVector<Device> devices;
     void loadMockDevices();
     void refreshDevicesTable();
+    void refreshDashboard();
 };
 #endif // MAINWINDOW_H

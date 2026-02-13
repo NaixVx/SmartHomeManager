@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     loadMockDevices();
     refreshDevicesTable();
+    refreshDashboard();
 
     // this->setStyleSheet("QWidget { border: 1px solid white; }"); // debug border
 
@@ -29,6 +30,40 @@ MainWindow::~MainWindow()
 void MainWindow::on_addDeviceButton_clicked()
 {
     qDebug() << "Add Device pressed";
+}
+
+void MainWindow::on_kitchenLightButton_clicked()
+{
+    qDebug() << "KitchenLightButton clicked";
+
+    for(Device &d : devices)
+    {
+        if(d.name == "Kitchen Light")
+        {
+            d.value = !d.value;
+            break;
+        }
+    }
+
+    refreshDashboard();
+    refreshDevicesTable();
+}
+
+void MainWindow::on_desktopLedButton_clicked()
+{
+    qDebug() << "DesktopLedButton clicked";
+
+    for(Device &d : devices)
+    {
+        if(d.name == "Desktop LEDs")
+        {
+            d.value = !d.value;
+            break;
+        }
+    }
+
+    refreshDashboard();
+    refreshDevicesTable();
 }
 
 void MainWindow::loadMockDevices()
@@ -117,5 +152,37 @@ void MainWindow::refreshDevicesTable()
     }
 }
 
-
+// dashboard widgets will be created dynamically
+void MainWindow::refreshDashboard()
+{
+    for(Device &d : devices)
+    {
+        if(d.type == DeviceType::Sensor)
+        {
+            if(d.sensorType == SensorType::Temperature)
+            {
+                ui->temperatureSensorName->setText(d.name);
+                ui->temperatureSensorValue->display(d.value);
+            }
+            else if(d.sensorType == SensorType::Humidity)
+            {
+                ui->humiditySensorName->setText(d.name);
+                ui->humiditySensorValue->display(d.value);
+            }
+        }
+        else if(d.type == DeviceType::Switch)
+        {
+            if(d.name.contains("Kitchen"))
+            {
+                ui->kitchenLightName->setText(d.name);
+                ui->kitchenLightButton->setText(d.value ? "ON" : "OFF");
+            }
+            else if(d.name.contains("Desktop"))
+            {
+                ui->desktopLedName->setText(d.name);
+                ui->desktopLedButton->setText(d.value ? "ON" : "OFF");
+            }
+        }
+    }
+}
 

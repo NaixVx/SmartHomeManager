@@ -21,14 +21,14 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="dashboardTab">
        <attribute name="title">
         <string>Dashboard</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout">
-        <item row="2" column="0">
+        <item row="1" column="0">
          <widget class="QWidget" name="humiditySensorWidget" native="true">
           <layout class="QGridLayout" name="gridLayout_3">
            <item row="2" column="1">
@@ -51,7 +51,7 @@
           </layout>
          </widget>
         </item>
-        <item row="0" column="2">
+        <item row="0" column="1">
          <widget class="QWidget" name="kitchenLightWidget" native="true">
           <layout class="QGridLayout" name="gridLayout_4">
            <item row="0" column="0">
@@ -72,46 +72,6 @@
             </widget>
            </item>
           </layout>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="Line" name="line">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2">
-         <widget class="QWidget" name="desktopLedWidget" native="true">
-          <layout class="QGridLayout" name="gridLayout_5">
-           <item row="0" column="0">
-            <widget class="QLabel" name="desktopLedTitleName">
-             <property name="text">
-              <string>Desktop LED</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QPushButton" name="desktopLedButton">
-             <property name="text">
-              <string>PushButton</string>
-             </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <property name="checked">
-              <bool>false</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="Line" name="line_2">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
-          </property>
          </widget>
         </item>
         <item row="0" column="0">
@@ -137,18 +97,30 @@
           </layout>
          </widget>
         </item>
-        <item row="1" column="0">
-         <widget class="Line" name="line_3">
-          <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="Line" name="line_4">
-          <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
-          </property>
+        <item row="1" column="1">
+         <widget class="QWidget" name="desktopLedWidget" native="true">
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="0" column="0">
+            <widget class="QLabel" name="desktopLedName">
+             <property name="text">
+              <string>Desktop LED</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QPushButton" name="desktopLedButton">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
