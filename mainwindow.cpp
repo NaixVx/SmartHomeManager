@@ -2,6 +2,7 @@
 #include "./ui_mainwindow.h"
 
 #include "device.h"
+#include "devicedetailsdialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -170,6 +171,25 @@ void MainWindow::refreshDevicesTable()
 
         // Device settings button
         QPushButton *btn = new QPushButton("Settings");
+
+        btn->setProperty("mac", d.macAddress);
+
+        connect(btn, &QPushButton::clicked, this, [=]()
+                {
+            QString mac = btn->property("mac").toString();
+
+            for(const Device &dev: devices)
+            {
+                if(dev.macAddress == mac)
+                {
+                    DeviceDetailsDialog dialog(this);
+                    dialog.setDevice(dev);
+                    dialog.exec();
+                    break;
+                }
+            }
+        });
+
         ui->devicesTable->setCellWidget(row, 3, btn);
     }
 }
@@ -207,3 +227,5 @@ void MainWindow::refreshDashboard()
         }
     }
 }
+
+
